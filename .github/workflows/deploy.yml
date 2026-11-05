@@ -1,9 +1,11 @@
-name: Deploy to GitHub Pages
+
+name: Deploy Frontend
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -27,28 +29,30 @@ jobs:
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: front-end/package-lock.json
 
       - name: Install dependencies
+        working-directory: front-end
         run: npm ci
 
-      - name: Build
+      - name: Build frontend
+        working-directory: front-end
         run: npm run build
 
-      - name: Upload artifact
+      - name: Upload build
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: front-end/dist
 
   deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
-    needs: build
-
-    runs-on: ubuntu-latest
-
     steps:
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
