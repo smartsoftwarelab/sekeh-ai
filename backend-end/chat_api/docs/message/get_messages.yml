@@ -1,0 +1,117 @@
+Get all messages of a chat
+---
+tags:
+  - Message
+summary: Get all messages of a chat
+description: Endpoint {/chats/{chat_id}/messages} - Returns all messages for a chat. Assistant messages include job_cards field (list of job cards or null) and is_marked field (boolean).
+security:
+  - BearerAuth: []
+parameters:
+  - in: path
+    name: chat_id
+    type: integer
+    required: true
+    description: ID of the chat
+responses:
+  200:
+    description: Messages retrieved successfully
+    schema:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 200
+        message:
+          type: string
+          example: ok
+        data:
+          type: object
+          properties:
+            chat:
+              type: object
+              properties:
+                chat_id:
+                  type: integer
+                  example: 1
+                title:
+                  type: string
+                  example: Job Search Chat
+                created_at:
+                  type: string
+                  format: date-time
+                updated_at:
+                  type: string
+                  format: date-time
+            messages:
+              type: array
+              items:
+                type: object
+                properties:
+                  message_id:
+                    type: integer
+                    example: 10
+                  role:
+                    type: string
+                    example: assistant
+                  content:
+                    type: string
+                    example: "رزومه شما تحلیل شد."
+                  created_at:
+                    type: string
+                    format: date-time
+                  job_cards:
+                    type: array
+                    nullable: true
+                    description: >
+                      فقط برای پیام‌های assistant با intent=analyze.
+                      کارت‌ها از DB خوانده می‌شوند.
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        company_name:
+                          type: string
+                        location:
+                          type: string
+                        paycheck:
+                          type: string
+                        requirements:
+                          type: array
+                          items:
+                            type: string
+                        match_percent:
+                          type: integer
+                        job_url:
+                          type: string
+                        source_site:
+                          type: string
+                        company_reviews:
+                          type: object
+                          nullable: true
+                  is_marked:
+                    type: boolean
+                    nullable: true
+                    example: false
+                    description: >
+                      فقط برای پیام‌های assistant.
+                      نشان‌دهنده اینکه آیا کارت‌های شغلی این پیام از قبل علامت‌گذاری شده‌اند یا خیر.
+                      اگر job_cards موجود باشد این مقدار تعیین می‌شود.
+  401:
+    description: Missing or invalid JWT token
+  404:
+    description: Chat not found
+    schema:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 404
+        error:
+          type: string
+          example: chat not found
+        data:
+          type: string
+          nullable: true
+  500:
+    description: Internal server error
