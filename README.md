@@ -1,5 +1,5 @@
+<img width="1536" height="1024" alt="IMG_20261102_164453_467" src="https://github.com/user-attachments/assets/275220e3-1afb-41ed-b95b-4e6934e86f1b" />
 
-https://github.com/user-attachments/assets/aede8e55-5452-4167-a025-069db1254d23
 # دستیار هوشمند کاریابی «سکه»
 
 مستندات فنی مخزن [smartsoftwarelab/sekeh-ai](https://github.com/smartsoftwarelab/sekeh-ai) برای توسعه‌دهندگان و مشارکت‌کنندگان.
@@ -734,7 +734,5 @@ erDiagram
 
 مخزن: [https://github.com/smartsoftwarelab/sekeh-ai](https://github.com/smartsoftwarelab/sekeh-ai)
 
-
-<img width="1536" height="1024" alt="IMG_20261102_164453_467" src="https://github.com/user-attachments/assets/275220e3-1afb-41ed-b95b-4e6934e86f1b" />
-
+https://github.com/user-attachments/assets/aede8e55-5452-4167-a025-069db1254d23
 Uploading Document 31003303834.mp4…
