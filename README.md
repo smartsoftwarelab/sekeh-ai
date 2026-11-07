@@ -734,5 +734,7 @@ erDiagram
 
 مخزن: [https://github.com/smartsoftwarelab/sekeh-ai](https://github.com/smartsoftwarelab/sekeh-ai)
 
-https://github.com/user-attachments/assets/aede8e55-5452-4167-a025-069db1254d23
-Uploading Document 31003303834.mp4…
+
+
+https://github.com/user-attachments/assets/01f82877-1be2-4db5-9b31-ae763c152f42
+
